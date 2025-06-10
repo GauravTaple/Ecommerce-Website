@@ -1,41 +1,60 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useMemo, useState, type ReactNode } from "react";
 import all_product from "../Components/Assets/all_product";
 
-export const ShopContext = createContext(null);
+// --------------------------------------------------------------------------------------
+type TcartItems = {
+    [key: string]: number;
+}
+
+// Define context value shape
+type TShopContextType = {
+    getTotalCartItems: () => number;
+    getTotalCartAmount: () => number;
+    all_product: typeof all_product;
+    cartItems: TcartItems;
+    addToCart: (itemId: number) => void;
+    removeFromCart: (itemId: number | string) => void;
+};
+
+// Provider props
+interface TShopContextProviderProps {
+    children: ReactNode;
+}
+// --------------------------------------------------------------------------------------
+export const ShopContext = createContext<TShopContextType | null>(null);
 
 const getDefaultCart = () => {
-    let cart = {};
+    const cart: TcartItems = {};
     for (let index = 0; index < all_product.length + 1; index++) {
         cart[index] = 0;
     }
     return cart;
 }
 
-const ShopContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState(getDefaultCart());
+const ShopContextProvider = (props: TShopContextProviderProps) => {
+    const [cartItems, setCartItems] = useState<TcartItems>(getDefaultCart());
 
-    const addToCart = (itemId: number) => {
+    const addToCart = useCallback((itemId: number) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-        console.log(cartItems, 'cartItems');
 
-    }
+    }, [])
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = useCallback((itemId: string | number) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    }
+    }, [])
 
-    const getTotalCartAmount = () => {
+    const getTotalCartAmount = useCallback(() => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 const itemInfo = all_product.find((product) => product.id === Number(item));
-                totalAmount += itemInfo.new_price * cartItems[item];
+                totalAmount += Number(itemInfo?.new_price) * cartItems[item];
             }
-            return totalAmount;
         }
-    }
+        return totalAmount;
+    }, [cartItems])
 
-    const getTotalCartItems = () => {
+    const getTotalCartItems = useCallback(() => {
         let totalItem = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
@@ -43,9 +62,17 @@ const ShopContextProvider = (props) => {
             }
         }
         return totalItem;
-    }
+    }, [cartItems])
 
-    const contextValue = { getTotalCartItems, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart };
+    const contextValue = useMemo(() => ({
+        getTotalCartItems,
+        getTotalCartAmount,
+        all_product,
+        cartItems,
+        addToCart,
+        removeFromCart
+    }), [addToCart, cartItems, getTotalCartAmount, getTotalCartItems, removeFromCart])
+
 
     return (
         <ShopContext.Provider value={contextValue}>

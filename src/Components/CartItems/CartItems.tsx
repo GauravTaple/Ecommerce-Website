@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
@@ -12,6 +12,7 @@ type TData = {
 
 export const CartItems = () => {
     const { all_product, cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
+
     return (
         <div className='cartitems'>
             <div className="cartitems-format-main">
@@ -25,17 +26,19 @@ export const CartItems = () => {
             <hr />
             {all_product.map((e: TData) => {
                 if (cartItems[e.id] > 0) {
-                    return <div>
-                        <div className="cartitems-format cartitems-format-main">
-                            <img src={e.image} alt="" className='carticon-product-icon' />
-                            <p>{e.name}</p>
-                            <p>${e.new_price}</p>
-                            <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                            <p>${e.new_price * cartItems[e.id]}</p>
-                            <img className='cartitems-remove-icon' src={remove_icon} alt="" onClick={() => { removeFromCart(e.id) }} />
+                    return (
+                        <div key={e.id}>
+                            <div className="cartitems-format cartitems-format-main">
+                                <img src={e.image} alt="" className='carticon-product-icon' />
+                                <p>{e.name}</p>
+                                <p>${e.new_price}</p>
+                                <button className='cartitems-quantity'>{cartItems[e.id]}</button>
+                                <p>${e.new_price * cartItems[e.id]}</p>
+                                <img className='cartitems-remove-icon' src={remove_icon} alt="" onClick={() => { removeFromCart(e.id) }} />
+                            </div>
+                            <hr />
                         </div>
-                        <hr />
-                    </div>
+                    )
                 }
                 return null;
             })}
