@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Item.css";
+import type { TProduct } from "../Types/types";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Item = (props: any) => {
+export const Item = (props: TProduct) => {
     return (
         <div className="item">
-            <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0, 0)} src={props.image} alt="" /></Link>
+            <Link to={`/product/${props.id}`}>
+                <img onClick={() => window.scrollTo(0, 0)} src={props.image} alt="image" />
+            </Link>
             <p>{props.name}</p>
             <div className="item-prices">
                 <div className="item-price-new">

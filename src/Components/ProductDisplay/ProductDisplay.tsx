@@ -1,14 +1,23 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import './ProductDisplay.css'
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from '../Assets/star_dull_icon.png'
 import { ShopContext } from '../../Context/ShopContext'
+import type { TProduct } from '../Types/types'
 
+type TProductDisplay = {
+    product: TProduct
+}
 
-export const ProductDisplay = (props) => {
+export const ProductDisplay = (props: TProductDisplay) => {
     const { product } = props;
 
-    const { addToCart } = useContext(ShopContext);
+    const shopContext = useContext(ShopContext);
+    if (!shopContext) {
+        throw new Error("ShopContext must be used within a ShopContextProvider");
+
+    }
+    const { addToCart } = shopContext;
 
     return (
         <div className="productdisplay">
@@ -53,8 +62,6 @@ export const ProductDisplay = (props) => {
                 <button onClick={() => { addToCart(product.id) }}>ADD TO CART</button>
                 <p className='productdisplay-right-category'><span>Category : </span>Women, T-Shirt, Crop Top</p>
                 <p className='productdisplay-right-category'><span>Tags : </span>Modern, Latest</p>
-
-
             </div>
         </div>
     )

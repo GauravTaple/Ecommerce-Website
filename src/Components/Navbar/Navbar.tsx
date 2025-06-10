@@ -7,7 +7,12 @@ import { ShopContext } from '../../Context/ShopContext';
 
 export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
-    const { getTotalCartItems } = useContext(ShopContext);
+
+    const shopContext = useContext(ShopContext);
+    if (!shopContext) {
+        throw new Error("ShopContext must be used within a ShopContextProvider");
+    }
+    const { getTotalCartItems } = shopContext;
 
     return (
         <div className="navbar">

@@ -1,8 +1,8 @@
 export type TProduct = {
-  id: string | number;
+  id: number;
   name: string;
   image: string;
-  new_price: string | number;
+  new_price: number;
   old_price: string | number;
   category?: string;
 };
