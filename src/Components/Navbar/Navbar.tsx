@@ -5,9 +5,13 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 import user_icon from '../Assets/man.png'
+import { useAppSelector } from '../../Redux/Hooks/global-hooks';
 
 export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
+    const { access_token } = useAppSelector((state) => state.login);
+    console.log(access_token, "acess token in navbar");
+
 
     const shopContext = useContext(ShopContext);
     if (!shopContext) {
@@ -36,16 +40,22 @@ export const Navbar = () => {
                 </li>
             </ul>
             <div className='nav-login-cart'>
-                <Link to="/"><button>Login</button></Link>
                 <Link to="/cart"><img src={cart_icon} alt="" /></Link>
                 <div className="nav-cart-count">{getTotalCartItems()}</div>
             </div>
-            <div>
-                <Link to="/">
-                    <img src={user_icon} alt="user" className='user-image' />
-                </Link>
-            </div>
 
-        </div>
+            {!access_token ? (
+                <div className='nav-login-cart'>
+                    <Link to="/"><button>Login</button></Link>
+                </div>
+            ) : (
+                <div>
+                    <img src={user_icon} alt="user" className='user-image' />
+                </div>
+            )}
+
+
+        </div >
+
     )
 }

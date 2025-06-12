@@ -1,8 +1,9 @@
-import { useForm } from "react-hook-form"
-import "./CSS/LoginSignUp.css"
+import { useForm } from "react-hook-form";
+import "./CSS/LoginSignUp.css";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../Redux/Hooks/global-hooks";
+import { setLoginResponse } from "../Redux/Slices/loginSlice";
 
 interface TLogin {
     name: string;
@@ -13,9 +14,10 @@ interface TLogin {
 //----------------------------------------------------------------------
 export const LoginSignUp = () => {
     const { handleSubmit, register, formState: { errors } } = useForm<TLogin>();
-    const [loginData, setLoginData] = useState();
-    console.log(loginData, "loginData------");
+    // const [loginData, setLoginData] = useState();
+    // console.log(loginData, "loginData------");
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const onSubmit = async (payload: TLogin) => {
         try {
@@ -24,8 +26,8 @@ export const LoginSignUp = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            localStorage.setItem("token", JSON.stringify(response.data));
-            setLoginData(response.data)
+            sessionStorage.setItem("token", JSON.stringify(response.data));
+            dispatch(setLoginResponse(response.data));
             alert("Login Success");
             navigate('/shop');
         } catch (error) {
