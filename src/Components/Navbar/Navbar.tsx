@@ -4,6 +4,7 @@ import cart_icon from '../Assets/cart_icon.png';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
+import user_icon from '../Assets/man.png'
 
 export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
@@ -21,16 +22,30 @@ export const Navbar = () => {
                 <p>SHOPPER</p>
             </div>
             <ul className='nav-menu'>
-                <li onClick={() => setMenu("shop")}><Link className='Link' to="/">Shop</Link> {menu === "shop" ? <hr /> : <></>}</li>
-                <li onClick={() => setMenu("mens")}><Link className='Link' to="/mens">Men</Link>{menu == "mens" ? <hr /> : <></>}</li>
-                <li onClick={() => setMenu("women")}><Link className='Link' to="/womens">Women</Link>{menu == "women" ? <hr /> : <></>}</li>
-                <li onClick={() => setMenu("kids")}><Link className='Link' to="/kids">Kids</Link>{menu === "kids" ? <hr /> : <></>}</li>
+                <li>
+                    <Link className='Link' to="/shop" onClick={() => setMenu("shop")}>Shop</Link> {menu === "shop" ? <hr /> : <></>}
+                </li>
+                <li>
+                    <Link className='Link' to="/mens" onClick={() => setMenu("men")}>Mens</Link>{menu == "men" ? <hr /> : <></>}
+                </li>
+                <li>
+                    <Link className='Link' to="/womens" onClick={() => setMenu("women")}>Womens</Link>{menu == "women" ? <hr /> : <></>}
+                </li>
+                <li>
+                    <Link className='Link' to="/kids" onClick={() => setMenu("kid")}>Kids</Link>{menu === "kid" ? <hr /> : <></>}
+                </li>
             </ul>
             <div className='nav-login-cart'>
-                <Link to="/LoginSignUp"><button>Login</button></Link>
+                <Link to="/"><button>Login</button></Link>
                 <Link to="/cart"><img src={cart_icon} alt="" /></Link>
                 <div className="nav-cart-count">{getTotalCartItems()}</div>
             </div>
+            <div>
+                <Link to="/">
+                    <img src={user_icon} alt="user" className='user-image' />
+                </Link>
+            </div>
+
         </div>
     )
 }

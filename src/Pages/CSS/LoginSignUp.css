@@ -1,69 +1,75 @@
-.loginsignup{
-    width: 100%;
-    height: 80vh;
-    background: #fce3fe;
-    padding-top: 100px;
+.loginsignup {
+  width: 100%;
+  height: 80vh;
+  background: #fce3fe;
+  padding-top: 100px;
 }
 
-.loginsignup-container{
-    width: 580px;
-    height: 550px;
-    background: white;
-    margin: auto;
-    padding: 40px 60px;
+.loginsignup-container {
+  width: 580px;
+  height: 550px;
+  background: white;
+  margin: auto;
+  padding: 40px 60px;
 }
 
-.loginsignup-container h1{
-    margin: 20px 0px;
-    font-size: 35px;
+.loginsignup-container h1 {
+  margin: 20px 0px;
+  font-size: 35px;
 }
 
-.loginsignup-fields{
-    display: flex;
-    flex-direction: column;
-    gap:25px;
-    margin-top: 20px;
+.loginsignup-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
 }
 
-.loginsignup-fields input{
-    height: 80px;
-    width:100%;
-    padding-left: 25px;
-    border: 1px solid #c9c9c9;
-    outline: none;
-    color:#5c5c5c;
-    font-size: 17px;
+.loginsignup-fields input {
+  height: 60px;
+  width: 100%;
+  padding-left: 25px;
+  border: 1px solid #c9c9c9;
+  outline: none;
+  color: #5c5c5c;
+  font-size: 17px;
 }
 
-.loginsignup-container button{
-    height: 40px;
-    width: 600px;
-    margin-top: 30px;
-    border: none;
-    background: #ff4141;
-    color: white;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
+.loginsignup-container button {
+  height: 40px;
+  width: 600px;
+  margin-top: 30px;
+  border: none;
+  background: #ff4141;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
 }
-.loginsignup-login{
-    font-size: 15px;
-    margin-top: 20px;
-    font-weight: 500;
-    color: #5c5c5c;
-}
-
-.loginsignup-login span{
-    color: red;
-    font-weight: 800;
+.loginsignup-login {
+  font-size: 15px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #5c5c5c;
 }
 
-.loginsignup-agree{
-    display: flex;
-    gap: 10px;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    align-items: center;
-    color: #5c5c5c
+.loginsignup-login span {
+  color: red;
+  font-weight: 800;
+}
+
+.loginsignup-agree {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  align-items: center;
+  color: #5c5c5c;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+  margin-top: -20px;
 }

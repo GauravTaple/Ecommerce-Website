@@ -6,3 +6,8 @@ export type TProduct = {
   old_price: string | number;
   category?: string;
 };
+
+export type TShopCategory = {
+  banner: string;
+  category: string;
+};

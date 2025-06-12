@@ -1,10 +1,10 @@
 import arrow_icon from '../Assets/breadcrum_arrow.png';
 import "./BreadCrumbs.css";
 
-type TBreadcrumbs = {
+export type TBreadcrumbs = {
     product: {
-        category: string;
-        name: string;
+        category?: string;
+        name?: string;
     }
 }
 export const BreadCrumbs = (props: TBreadcrumbs) => {
