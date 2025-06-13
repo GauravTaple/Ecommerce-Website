@@ -14,8 +14,6 @@ interface TLogin {
 //----------------------------------------------------------------------
 export const LoginSignUp = () => {
     const { handleSubmit, register, formState: { errors } } = useForm<TLogin>();
-    // const [loginData, setLoginData] = useState();
-    // console.log(loginData, "loginData------");
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -28,7 +26,7 @@ export const LoginSignUp = () => {
             });
             sessionStorage.setItem("token", JSON.stringify(response.data));
             dispatch(setLoginResponse(response.data));
-            alert("Login Success");
+            // alert("Login Success");
             navigate('/shop');
         } catch (error) {
             console.log(error, "error------");

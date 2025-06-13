@@ -18,9 +18,13 @@ const loginSlice = createSlice({
       state.access_token = access_token ?? "";
       state.refresh_token = refresh_token ?? "";
     },
+    setLogout: (state) => {
+      state.access_token = "";
+      state.refresh_token = "";
+    },
   },
 });
 
-export const { setLoginResponse } = loginSlice.actions;
+export const { setLoginResponse, setLogout } = loginSlice.actions;
 
 export default loginSlice.reducer;

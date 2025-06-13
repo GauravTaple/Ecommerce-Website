@@ -10,8 +10,25 @@ import { Footer } from './Components/Footer/Footer'
 import men_banner from './Components/Assets/banner_mens.png'
 import women_banner from './Components/Assets/banner_women.png'
 import kid_banner from './Components/Assets/banner_kids.png'
+import { useAppDispatch } from './Redux/Hooks/global-hooks'
+import { useEffect } from 'react'
+import { setLoginResponse } from './Redux/Slices/loginSlice'
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const tokenString = sessionStorage.getItem('token');
+    if (tokenString) {
+      try {
+        const tokenData = JSON.parse(tokenString);
+        const accessToken = tokenData.access_token;
+        dispatch(setLoginResponse(accessToken));
+      } catch (err) {
+        console.error('Failed to parse token from sessionStorage', err);
+      }
+    }
+  })
   return (
     <>
       <div>
