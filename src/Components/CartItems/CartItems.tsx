@@ -3,6 +3,7 @@ import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
 import type { TProduct } from '../Types/types'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 export const CartItems = () => {
     const shopContext = useContext(ShopContext);
@@ -65,7 +66,11 @@ export const CartItems = () => {
                             <p>${getTotalCartAmount()}</p>
                         </div>
                     </div>
-                    <button>Proceed To Checkout</button>
+                    <button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                        Proceed To Checkout
+                        <Icon icon="flowbite:arrow-right-outline" width="25" height="25" />
+                    </button>
+
                 </div>
                 <div className="cartitems-promocode">
                     <p>If you have a promo code, Enter it here</p>
