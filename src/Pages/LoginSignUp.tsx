@@ -26,7 +26,7 @@ export const LoginSignUp = () => {
             });
             sessionStorage.setItem("token", JSON.stringify(response.data));
             dispatch(setLoginResponse(response.data));
-            // alert("Login Success");
+            alert("Login Success");
             navigate('/shop');
         } catch (error) {
             console.log(error, "error------");

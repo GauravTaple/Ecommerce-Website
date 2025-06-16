@@ -23,7 +23,7 @@ interface TProfile {
 // -------------------------------------------------------------------------------------
 export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
-    const { access_token } = useAppSelector((state) => state.login);
+    const { access_token } = useAppSelector((state) => state.reducer.login);
     console.log(access_token, 'access_token++++++++++++++++');
 
     const [showDropdown, setShowDropdown] = useState(false);
