@@ -45,6 +45,10 @@ export const Navbar = () => {
         setShowDropdown(false);
     };
 
+    const handleLogoClick = () => {
+        navigate('/shop')
+    }
+
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (dropdownRef.current && !(dropdownRef.current as HTMLElement).contains(e.target as Node)) {
@@ -78,7 +82,7 @@ export const Navbar = () => {
         <div className="navbar">
             <div className="nav-logo">
                 <img src={logo} alt="" />
-                <p style={{ cursor: 'pointer' }}>SHOPPER</p>
+                <p style={{ cursor: 'pointer' }} onClick={handleLogoClick}>SHOPPER</p>
             </div>
             <ul className='nav-menu'>
                 <li>
