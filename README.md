@@ -1,5 +1,5 @@
-# 💫 About Me:
-An interactive and responsive e-commerce web app built with TypeScript and JavaScript, featuring product listing, cart, and checkout.
+  # 💫 About Me:
+A simple and interactive front-end e-commerce project built with **HTML, CSS, JavaScript and TypeScript**. Users can browse products, add items to a cart, and complete a mock checkout.
 
 
 # 💻 Tech Stack:
@@ -13,3 +13,9 @@ An interactive and responsive e-commerce web app built with TypeScript and JavaS
 [![](https://visitcount.itsvg.in/api?id=GauravTaple&icon=0&color=0)](https://visitcount.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+
+## 🛠️ Getting Started (Local Setup)
+
+1. **Clone the repo**  
+   git clone https://github.com/GauravTaple/Ecommerce-Website.git
+   cd Ecommerce-Website
