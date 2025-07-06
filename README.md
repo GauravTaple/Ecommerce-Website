@@ -1,5 +1,5 @@
   # 💫 About Me:
-A simple and interactive front-end e-commerce project built with **HTML, CSS, JavaScript and TypeScript**. Users can browse products, add items to a cart, and complete a mock checkout.
+A simple and interactive front-end e-commerce project built with **React.js,TypeScript, HTML5 and CSS3**. Users can browse products, add items to a cart, and complete a mock checkout.
 
 ## 🚀 Features
 
