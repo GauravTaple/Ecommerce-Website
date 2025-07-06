@@ -24,6 +24,5 @@ A simple and interactive front-end e-commerce project built with **HTML, CSS, Ja
 ## 🛠️ Getting Started (Local Setup)
 
 1. **Clone the repo**  
-   ```bash
    git clone https://github.com/GauravTaple/Ecommerce-Website.git
    cd Ecommerce-Website
